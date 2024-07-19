@@ -4,14 +4,14 @@ const mysql = require('mysql2/promise');
 const path = require('path');
 const { queries } = require('./index.json');
 
-const MIGRATION_FILE_PATH = '../../../sql/01-migration.sql';
-const SEED_FILE_PATH = '../../../sql/02-seed.sql';
+const MIGRATION_FILE_PATH = '../../sql/01-migration.sql';
+const SEED_FILE_PATH = '../../sql/02-seed.sql';
 
 const config = {
-  host: process.env.MYSQL_HOSTNAME || 'localhost',
+  host: process.env.MYSQL_HOST || 'localhost',
   port: process.env.MYSQL_PORT || 3306,
   user: process.env.MYSQL_USER || 'root',
-  password: process.env.MYSQL_PASSWORD || 'password',
+  password: process.env.MYSQL_PASSWORD || '1234',
   database: 'monitoria',
   multipleStatements: true,
 };
