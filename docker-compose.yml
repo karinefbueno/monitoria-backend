@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  backend:
+    build: backend/
+    container_name: backend
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/backend
+      - ./sql:/sql
+    ports:
+      - 3001:3001
+    networks:
+      - rede-virtual-1
+      - rede-virtual-2
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234
+      DB_NAME: monitoria
+      JWT_SECRET: secretJWT
+      MYSQL_PORT: 3306
+
+  db:
+    container_name: monitoria_db
+    image: mysql:8.0.23
+    platform: linux/x86_64
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: monitoria
+    networks:
+      - rede-virtual-2
+
+networks:
+  rede-virtual-1:
+  rede-virtual-2:
+    driver: bridge

@@ -1,0 +1,27 @@
+# A imagem é a nossa aplicação “empacotada” com todas as dependências necessárias já instaladas dentro dela.
+
+# Imagine a imagem Docker como um arquivo zip, que contém o código-fonte e tudo o que é necessário para a execução correta do projeto.
+# Não é possível entrar no “terminal” de uma imagem, já que ela não está em execução.
+# O Docker possui um arquivo especial chamado Dockerfile, que nos ajuda a criar imagens. Falaremos mais sobre isso adiante!
+# O container é um processo que representa a execução de uma imagem já construída anteriormente.
+
+# Imagine o container Docker como um programa que você executa após “descompactá-lo” de um arquivo zipado, que já veio com todas as dependências necessárias.
+# Apesar de ser um processo isolado, é possível entrar no terminal dentro do container!
+# É possível parar e continuar a execução de um container sem precisar recriá-lo.
+
+
+FROM node:16.14.2
+
+# Diretório padrão de execução
+WORKDIR /backend
+
+# Instala as dependências Node
+COPY package*.json ./ 
+RUN npm install
+
+# Copia  tudo do dir raiz do pc p conrtainer 
+COPY . .
+
+EXPOSE 3001
+
+CMD [ "npm","run", "dev"]

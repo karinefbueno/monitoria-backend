@@ -1,0 +1,13 @@
+{
+  "name": "monitoria-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migration": "node -e \"require('./__tests__/utils/db').runMigration()\"",
+    "seed": "node -e \"require('./__tests__/utils/db').runSeed()\"",
+    "db:reset": "npm run migration && npm run seed"
+  },
+  "author": "",
+  "license": "ISC"
+}
