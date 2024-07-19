@@ -9,5 +9,8 @@
     "db:reset": "npm run migration && npm run seed"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^3.10.3"
+  }
 }
